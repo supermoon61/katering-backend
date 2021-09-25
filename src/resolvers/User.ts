@@ -23,6 +23,7 @@ import { checkIntroFolder } from "../utils/makeDirectory";
 
 import { EMailService } from "./../mailer/mail";
 import { Context } from "../types/MyContext";
+import { isLatitude } from "class-validator";
 let mailer = new EMailService();
 
 @ObjectType()
@@ -65,6 +66,97 @@ class User {
 
   @Field(() => Float)
   readonly updatedAt: Date;
+}
+
+@ObjectType()
+class UserToken{
+  @Field()
+    id: Number;
+
+  @Field()
+    user_id:Number;
+
+  @Field()
+    token: Number;
+
+  @Field()
+    platform: String;
+
+  @Field()
+    version: String;
+}
+
+@ObjectType()
+class UserAddress{
+  @Field()
+    id: Number;
+
+  @Field()
+    user_id:Number;
+
+  @Field()
+    address_line1: String;
+
+  @Field({nullable:true})
+    address_line2: String;
+
+  @Field()
+    town: String;
+
+  @Field()
+    country:String;
+
+  @Field()
+    postcode:String;
+
+  @Field()
+    latitude:Number;
+
+  @Field()
+    longitude:Number;
+
+}
+
+@ObjectType()
+class UserStripe{
+  @Field()
+    id: Number;
+
+  @Field()
+    user_id:Number;
+
+  @Field()
+  stripe_account_id: String;
+
+  @Field()
+  payment_method_id: String;
+
+  @Field()
+  card_last_four: Number;
+
+  @Field()
+  expiry_month:Number;
+
+  @Field()
+  expiry_year:Number;
+
+
+}
+
+@ObjectType()
+class UserPlan {
+
+  @Field()
+    id:Number;
+
+  @Field()
+    user_id:Number;
+
+  @Field()
+    order_reference:String;
+
+  @Field()
+    plan_id:Number;
 }
 
 @ObjectType()
