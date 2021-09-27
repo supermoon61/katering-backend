@@ -23,7 +23,7 @@ import { checkIntroFolder } from "../utils/makeDirectory";
 
 import { EMailService } from "./../mailer/mail";
 import { Context } from "../types/MyContext";
-import { isLatitude } from "class-validator";
+//import { isLatitude } from "class-validator";
 let mailer = new EMailService();
 
 @ObjectType()
@@ -35,7 +35,10 @@ class User {
   username: string;
 
   @Field()
-  fullname: string;
+  first_name: string;
+
+  @Field()
+  last_name: string;
 
   @Field()
   email: string;
@@ -56,107 +59,27 @@ class User {
   instagram: string;
 
   @Field({ nullable: true })
-  location: string;
+  bio: string;
 
   @Field({ nullable: true })
-  bio: string;
+  gender: string;
+
+  @Field({ nullable: true })
+  status: string;
+
+  @Field({ nullable: true })
+  role: string;
+
+  @Field({ nullable: true })
+  profile: string;
+
+  @Field({ nullable: true })
+  isVerified: boolean;
 
   @Field(() => Float)
   readonly createdAt: Date;
-
   @Field(() => Float)
   readonly updatedAt: Date;
-}
-
-@ObjectType()
-class UserToken{
-  @Field()
-    id: Number;
-
-  @Field()
-    user_id:Number;
-
-  @Field()
-    token: Number;
-
-  @Field()
-    platform: String;
-
-  @Field()
-    version: String;
-}
-
-@ObjectType()
-class UserAddress{
-  @Field()
-    id: Number;
-
-  @Field()
-    user_id:Number;
-
-  @Field()
-    address_line1: String;
-
-  @Field({nullable:true})
-    address_line2: String;
-
-  @Field()
-    town: String;
-
-  @Field()
-    country:String;
-
-  @Field()
-    postcode:String;
-
-  @Field()
-    latitude:Number;
-
-  @Field()
-    longitude:Number;
-
-}
-
-@ObjectType()
-class UserStripe{
-  @Field()
-    id: Number;
-
-  @Field()
-    user_id:Number;
-
-  @Field()
-  stripe_account_id: String;
-
-  @Field()
-  payment_method_id: String;
-
-  @Field()
-  card_last_four: Number;
-
-  @Field()
-  expiry_month:Number;
-
-  @Field()
-  expiry_year:Number;
-
-
-}
-
-@ObjectType()
-class UserPlan {
-
-  @Field()
-    id:Number;
-
-  @Field()
-    user_id:Number;
-
-  @Field()
-    order_reference:String;
-
-  @Field()
-    plan_id:Number;
 }
 
 @ObjectType()
@@ -182,14 +105,18 @@ class UserInput implements Partial<User> {
 
 @InputType()
 class UserUpdateInput {
+ 
   @Field()
-  fullname: string;
+  first_name: string;
 
   @Field()
-  location: string;
+  last_name: string;
 
   @Field()
   bio: string;
+
+  @Field()
+  gender: string;
 
   @Field()
   mobile: string;

@@ -6,15 +6,12 @@ const userSchema = new Schema(
       unique: true,
       required: true,
     },
-    fullname: {
-      type: String,
-    },
+    first_name: { type: String, trim: true, default: '' },
+    last_name: { type: String, trim: true, default: '' },
     bio: {
       type: String,
     },
-    designation: {
-      type: String,
-    },
+
     email: {
       type: String,
       unique: true,
@@ -48,6 +45,10 @@ const userSchema = new Schema(
     whatsapp: {
       type: Number,
     },
+    gender: {
+      type: String,
+      trim: true,
+    },
     status: {
       type: String,
       required: true,
@@ -63,177 +64,19 @@ const userSchema = new Schema(
       require: true,
       default: false,
     },
+    planId: {
+      type: Schema.Types.ObjectId,
+      ref: 'Plans'
+    },
+    addressId: {
+      type: Schema.Types.ObjectId,
+      ref: 'Address'
+    },
+    stripeId: {
+      type: Schema.Types.ObjectId,
+      ref: 'Stripe'
+    }
     
-  },
-  {
-    timestamps: true,
-  });
-  
-const UserToken = new Schema(
-  {
-    id: { 
-      type: Number, 
-      required: true 
-    },
-    user_id: { 
-      type: Number, 
-      required: true 
-    },
-    token: { 
-      type: String, 
-      trim: true, 
-      required: true, 
-      unique: true 
-    },
-    platform: { 
-      type: String, 
-      trim: true, 
-      required: true 
-    },
-    version: {
-      type: String,
-      required: true,
-      unique: true,
-      lowercase: true,
-      trim: true,
-    },
-
-  });
-
-const UserAddress = new Schema(
-  {
-    id: 
-    { 
-      type: Number, 
-      required: true 
-    },
-
-    user_id: 
-    { 
-      type: Number, 
-      required: true 
-    },
-
-    address_line_1:
-     { 
-      type: String, 
-      trim: true, 
-      required: true 
-    },
-
-    address_line_2: 
-    { 
-      type: String, 
-      trim: true, 
-      default: null 
-    },
-
-    town:
-     { 
-      type: String, 
-      trim: true 
-    },
-
-    county: 
-    { 
-      type: String,
-       trim: true
-       },
-    postcode: 
-    { 
-      type: String, 
-      trim: true 
-    },
-    latitude: 
-    { 
-      type: Number, 
-      trim: true, 
-      default: null 
-    },
-    longitude: 
-    { 
-      type: Number, 
-      trim: true, 
-      default: null 
-    },
-  });
-
-const UserStripe = new Schema(
-  {
-    id: 
-    { 
-      type: Number, 
-      required: true 
-    },
-
-    user_id: 
-    { 
-      type: Number, 
-      required: true 
-    },
-
-    stripe_account_id: 
-    { 
-      type: String, 
-      trim: true, 
-      required: true 
-    },
-
-    payment_method_id: 
-    { 
-      type: String, 
-      trim: true, 
-      default: null 
-    },
-
-    card_last_four: 
-    { 
-      type: Number, 
-      trim: true, 
-      default: null 
-    },
-
-    expiry_month: 
-    { 
-      type: Number, 
-      trim: true, 
-      default: null
-     },
-
-    expiry_year: 
-    { type: Number, 
-      trim: true,
-       default: null 
-      },
-  });
-
-const UserPlan = new Schema(
-  {
-    id: 
-    { 
-      type: Number, 
-      required: true 
-    },
-
-    user_id: 
-    { 
-      type: Number, 
-      required: true 
-    },
-
-    order_reference: 
-    { 
-      type: String, 
-      trim: true, 
-      required: true, 
-      unique: true 
-    },
-
-    plan_id: 
-    { 
-      type: Number, 
-      trim: true }
-      ,
   },
   {
     timestamps: true,

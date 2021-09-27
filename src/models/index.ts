@@ -8,6 +8,9 @@ import Coupons from'./Coupons';
 import Notifications from './Notifications';
 import Requests from './Requests';
 import Files from './Files';
+import Addresses from './Addresses';
+import Stripes from './Stripes';
+import Plans from './Plans';
 
 // import Exams from './Exams';
 // import Quizes from './Quizes';
@@ -23,7 +26,10 @@ export {
     Coupons,
     Notifications,
     Requests,
-    Files
+    Files,
+    Addresses,
+    Stripes,
+    Plans
     //Coupons,
     // Reply,
     // Results,
