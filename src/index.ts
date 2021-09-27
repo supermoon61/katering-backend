@@ -95,7 +95,7 @@ app.get('/', (req: Express.Request, res: Express.Response) => {
     console.log(`Server is running on port ${process.env.PORT}`);
   })
 
-  const dbUrl = `mongodb+srv://chandrama:${process.env.DB_PASSWORD}@cluster0.qroe2.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+  const dbUrl = `mongodb+srv://developer:${process.env.DB_PASSWORD}@cluster0.stwdi.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 
   mongoose.connect(dbUrl, {
     useNewUrlParser: true,
