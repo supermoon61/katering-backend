@@ -237,7 +237,7 @@ export default class UserResolver {
 
   @Mutation(() => String)
   async updateUser(
-    @Arg("id") updatedData: UserUpdateInput,
+    @Arg("data") updatedData: UserUpdateInput,
     @Ctx() ctx: any
   ): Promise<String> {
     await Users.findOneAndUpdate({ _id: ctx.user.sub }, updatedData, {
