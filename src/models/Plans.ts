@@ -20,7 +20,8 @@ const planSchema = new Schema(
     product_type:{
       type: ['training', 'consultation', 'subscription', 'other'],
       default:'other'
-    }
+    },
+    order_reference: { type: String, trim: true, required: true, unique: true },
   },
   {
     timestamps: true,

@@ -3,7 +3,9 @@ import { Schema, model } from "mongoose";
 const categorySchema = new Schema(
   {
     title: {type: String, required: true, unique: true, trim: true},
-    description: String,
+    description:{
+      type: String,
+    },
     slug: { type: String, required: true, unique: true },
     status: { type: Boolean, default: true,},
   },

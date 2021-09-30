@@ -3,8 +3,9 @@ import { Schema, model } from "mongoose";
 const customerSchema = new Schema({
     stripeId: {
         type: Schema.Types.ObjectId,
-        ref: 'Stripe'
+        ref: 'Stripes'
       },
+
     card_brand:{
         type: String,
         default:null,
