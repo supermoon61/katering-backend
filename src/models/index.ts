@@ -1,4 +1,5 @@
-import Students from './Students';
+// import Students from './old models/Students';
+import Restaurants from './Restaurants';
 import Users from './Users';
 import Categories from './Categories';
 import Courses from './Courses';
@@ -17,7 +18,8 @@ import Plans from './Plans';
 // import Results from './Results';
 
 export {
-    Students,
+    // Students,
+    Restaurants,
     Users,
     Categories,
     Payments,
